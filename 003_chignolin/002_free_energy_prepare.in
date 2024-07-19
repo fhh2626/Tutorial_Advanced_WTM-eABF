@@ -1,0 +1,57 @@
+colvarsTrajFrequency            5000
+colvarsRestartFrequency         1000000
+smp off
+
+colvar {
+    name                       end_to_end_distance
+
+    lowerboundary              3.0
+    upperboundary              22.0
+    width                      0.1
+
+    reflectingLowerboundary    on
+    reflectingUpperboundary    on
+    expandBoundaries           on
+
+    extendedlagrangian         on
+    extendedFluctuation        0.1
+    subtractAppliedForce       on
+
+    distance {
+        group1 {atomNumbers {5}}
+        group2 {atomNumbers {133}}
+    }
+}
+
+colvar {
+    name asp3n_gly70
+
+    distance {
+        group1 {atomNumbers {31}}
+        group2 {atomNumbers {92}}
+    }
+}
+
+colvar {
+    name asp3n_thr80
+
+    distance {
+        group1 {atomNumbers {31}}
+        group2 {atomNumbers {106}}
+    }
+}
+
+abf {
+    colvars         end_to_end_distance
+    writeCZARwindowFile yes
+    fullSamples     1000
+    historyFreq     1000000
+}
+
+metadynamics {
+    colvars         end_to_end_distance
+    hillWeight      0.2
+    hillWidth       5.0
+    wellTempered    on
+    biasTemperature 8000
+}

@@ -1,0 +1,41 @@
+colvarsTrajFrequency      5000
+colvarsRestartFrequency   50000
+
+colvar {
+	width 5.0
+	name phi_1
+	dihedral {
+		group1 {atomNumbers {5}}
+		group2 {atomNumbers {7}}
+		group3 {atomNumbers {9}}
+		group4 {atomNumbers {15}}
+	}
+}
+
+colvar {
+	width 5.0
+	name phi_2
+	dihedral {
+		group1 {atomNumbers {15}}
+		group2 {atomNumbers {17}}
+		group3 {atomNumbers {19}}
+		group4 {atomNumbers {25}}
+	}
+}
+
+colvar {
+	width 5.0
+	name phi_3
+	dihedral {
+		group1 {atomNumbers {25}}
+		group2 {atomNumbers {27}}
+		group3 {atomNumbers {29}}
+		group4 {atomNumbers {35}}
+	}
+}
+
+abf {
+	colvars               phi_1 phi_2 phi_3
+	fullSamples           100
+    historyfreq           5000000
+}
